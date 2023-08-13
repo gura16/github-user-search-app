@@ -25,16 +25,18 @@ function App() {
           </div>
         </div>
         <div className="container2">
-          <img className="searchfoto" src={search} />
-          <input
-            className="input"
-            placeholder="Search GitHub username…"
-          ></input>
+          <div className="searchdiv">
+            <img className="searchfoto" src={search} />
+            <input
+              className="input"
+              placeholder="Search GitHub username…"
+            ></input>
+          </div>
           <button className="button">Search</button>
         </div>
         <div className="container3">
           <div className="titlediv">
-            <img src={oval} />
+            <img className="ovalfoto" src={oval} />
             <div className="titleinfo">
               <h2>The Octocat</h2>
               <p className="mail">@octocat</p>
@@ -59,16 +61,26 @@ function App() {
           </div>
           <div className="contactdiv">
             <div className="icons">
-              <img className="icon" src={location} />
-              <img className="icon" src={link} />
-              <img className="icon" src={twitter} />
-              <img className="icon" src={github} />
-            </div>
-            <div className="textdiv">
-              <p className="icontext">San Francisco</p>
-              <p className="icontext">https://github.blog</p>
-              <p className="icontext">Not Available</p>
-              <p className="icontext">@github</p>
+              <div className="icon1">
+                <div className="iconandtext">
+                  <img className="icon" src={location} />
+                  <p className="icontext">San Francisco</p>
+                </div>
+                <div className="iconandtext">
+                  <img className="icon" src={link} />
+                  <p className="icontext">https://github.blog</p>
+                </div>
+              </div>
+              <div className="icon2">
+                <div className="iconandtext">
+                  <img className="icon" src={twitter} />
+                  <p className="icontext">Not Available</p>
+                </div>
+                <div className="iconandtext">
+                  <img className="icon" src={github} />
+                  <p className="icontext">@github</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
