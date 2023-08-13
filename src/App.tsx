@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import sun from "./image/sun.png";
+import dark from "./image/dark.png";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="body">
+      <div className="maincard">
+        <div className="container1">
+          <h1>devfinder</h1>
+          <div className="lightanddark">
+            <div className="lightdiv">
+              <p className="lighttext">LIGHT</p>
+              <img src={sun} />
+            </div>
+            <div className="darkdiv">
+              <p className="darktext">DARK</p>
+              <img src={dark} />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
