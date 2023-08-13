@@ -64,3 +64,60 @@ h1 {
   display: flex;
   justify-content: space-between;
 }
+
+.container2 {
+  width: 327px;
+  height: 60px;
+  background-color: #1e2a47;
+  border-radius: 15px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.searchfoto {
+  width: 20px;
+  height: 20px;
+}
+
+.input {
+  width: 184px;
+  height: 25px;
+  background-color: #1e2a47;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.input::placeholder {
+  font-family: "Space Mono";
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: white;
+}
+
+.button {
+  width: 84px;
+  height: 46px;
+  background-color: #0079ff;
+  border-radius: 10px;
+  border: none;
+  font-family: "Space Mono";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0px;
+  color: white;
+  cursor: pointer;
+}

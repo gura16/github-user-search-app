@@ -1,6 +1,7 @@
 import "./App.css";
 import sun from "./image/sun.png";
 import dark from "./image/dark.png";
+import search from "./image/search.png";
 
 function App() {
   return (
@@ -18,6 +19,14 @@ function App() {
               <img src={dark} />
             </div>
           </div>
+        </div>
+        <div className="container2">
+          <img className="searchfoto" src={search} />
+          <input
+            className="input"
+            placeholder="Search GitHub username…"
+          ></input>
+          <button className="button">Search</button>
         </div>
       </div>
     </div>
