@@ -121,3 +121,139 @@ h1 {
   color: white;
   cursor: pointer;
 }
+
+.container3 {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  border-radius: 15px;
+  width: 327px;
+  height: 517px;
+  background-color: #1e2a47;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+h2 {
+  font-family: "Space Mono";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: white;
+}
+
+.mail {
+  font-family: "Space Mono";
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #0079ff;
+}
+
+.date {
+  font-family: "Space Mono";
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: white;
+}
+
+.titlediv {
+  display: flex;
+  gap: 20px;
+}
+
+.titleinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+h3 {
+  font-family: "Space Mono";
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: white;
+}
+
+.followersdiv {
+  width: 279px;
+  height: 85px;
+  background-color: #141d2f;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-top: 15px;
+}
+
+.followingtext {
+  font-family: "Space Mono";
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+}
+
+.followingnumber {
+  font-family: "Space Mono";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  margin-left: -15px;
+}
+
+.followers {
+  margin-right: -10px;
+}
+
+.contactdiv {
+  display: flex;
+  gap: 20px;
+}
+.icon {
+  width: 17px;
+  height: 20px;
+}
+.icons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.icontext {
+  font-family: "Space Mono";
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: white;
+}
+
+.textdiv {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
