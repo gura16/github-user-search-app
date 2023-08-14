@@ -15,6 +15,10 @@ body {
   width: 327px;
   margin: auto;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -277,9 +281,13 @@ h3 {
   gap: 20px;
 }
 
+.ovalfoto1 {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .maincard {
-    margin-top: 150px;
+    margin-top: 70px;
   }
 
   .container1 {
@@ -386,5 +394,46 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+}
+
+@media (min-width: 1040px) {
+  .container1 {
+    width: 730px;
+  }
+
+  .container2 {
+    width: 730px;
+    height: 69px;
+    gap: 290px;
+  }
+  .container3 {
+    width: 730px;
+    height: 444px;
+    padding-left: 200px;
+    position: relative;
+  }
+
+  .ovalfoto {
+    display: none;
+  }
+
+  .ovalfoto1 {
+    display: block;
+    position: absolute;
+    left: 40px;
+    top: 30px;
+  }
+
+  .sun {
+    cursor: pointer;
+  }
+
+  .dark {
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #60abff;
   }
 }

@@ -7,6 +7,7 @@ import github from "./image/github.png";
 import twitter from "./image/twitter.png";
 import link from "./image/link.png";
 import location from "./image/location.png";
+import oval1 from "./image/Oval1.png";
 function App() {
   return (
     <div className="body">
@@ -16,11 +17,11 @@ function App() {
           <div className="lightanddark">
             <div className="lightdiv">
               <p className="lighttext">LIGHT</p>
-              <img src={sun} />
+              <img className="sun" src={sun} />
             </div>
             <div className="darkdiv">
               <p className="darktext">DARK</p>
-              <img src={dark} />
+              <img className="dark" src={dark} />
             </div>
           </div>
         </div>
@@ -37,6 +38,7 @@ function App() {
         <div className="container3">
           <div className="titlediv">
             <img className="ovalfoto" src={oval} />
+            <img className="ovalfoto1" src={oval1} />
             <div className="titleinfo">
               <h2>The Octocat</h2>
               <p className="mail">@octocat</p>
