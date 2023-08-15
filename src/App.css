@@ -80,8 +80,15 @@ h1 {
   align-items: center;
   gap: 10px;
   padding: 10px;
+  position: relative;
 }
+.error {
+  position: absolute;
+  color: red;
 
+  right: 140px;
+  display: none;
+}
 .searchfoto {
   width: 20px;
   height: 20px;
@@ -129,7 +136,11 @@ h1 {
   color: white;
   cursor: pointer;
 }
-
+.ovalfoto {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
 .container3 {
   margin-top: 20px;
   margin-bottom: 50px;
@@ -293,7 +304,9 @@ h3 {
   .container1 {
     width: 573px;
   }
-
+  .error {
+    display: block;
+  }
   .container2 {
     padding-left: 30px;
     width: 573px;
@@ -423,6 +436,9 @@ h3 {
     position: absolute;
     left: 40px;
     top: 30px;
+    width: 117px;
+    height: 117px;
+    border-radius: 50%;
   }
 
   .sun {

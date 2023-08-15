@@ -8,7 +8,46 @@ import twitter from "./image/twitter.png";
 import link from "./image/link.png";
 import location from "./image/location.png";
 import oval1 from "./image/Oval1.png";
-function App() {
+import axios from "axios";
+import React, { useState } from "react";
+import { profile } from "console";
+interface UserData {
+  login: string;
+  name: string;
+  avatar_url: string;
+  created_at: string;
+  bio: string;
+  public_repos: number;
+  followers: number;
+  following: number;
+  location: string;
+  company: string;
+  twitter_username: string;
+  blog: string;
+  html_url: string;
+}
+const App: React.FC = () => {
+  const [inputValue, setInputValue] = useState<string>("");
+  const [userData, setUserData] = useState<UserData | any>(String);
+  const [noResult, setNoResult] = useState(false);
+  const [userImage, setUserImage] = useState(false);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get<UserData>(
+        `https://api.github.com/users/${inputValue}`
+      );
+      setUserData(response.data);
+      setUserImage(true);
+      setNoResult(false);
+    } catch (error) {
+      setNoResult(true);
+    }
+  };
   return (
     <div className="body">
       <div className="maincard">
@@ -31,24 +70,36 @@ function App() {
             <input
               className="input"
               placeholder="Search GitHub username…"
+              value={inputValue}
+              onChange={handleInputChange}
             ></input>
           </div>
-          <button className="button">Search</button>
+          {noResult === true && <p className="error">No results</p>}
+          <button onClick={handleSearch} className="button">
+            Search
+          </button>
         </div>
         <div className="container3">
           <div className="titlediv">
-            <img className="ovalfoto" src={oval} />
-            <img className="ovalfoto1" src={oval1} />
+            <img
+              className="ovalfoto"
+              src={userImage ? userData.avatar_url : oval}
+            />
+            <img
+              className="ovalfoto1"
+              src={userImage ? userData.avatar_url : oval1}
+            />
             <div className="titleinfo">
-              <h2>The Octocat</h2>
-              <p className="mail">@octocat</p>
-              <p className="date">Joined 25 Jan 2011</p>
+              <h2>{userData.name}</h2>
+              <a href={userData.html_url} className="mail">
+                @{userData.login}
+              </a>
+              <p className="date">
+                Joned {new Date(userData.created_at).toLocaleDateString()}
+              </p>
             </div>
           </div>
-          <h3>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec
-            odio. Quisque volutpat mattis eros.
-          </h3>
+          <h3>{userData.bio}</h3>
           <div className="followersdiv">
             <p className="followingtext">
               <span>Repos</span>
@@ -56,9 +107,9 @@ function App() {
               <span>Following</span>
             </p>
             <p className="followingnumber">
-              <span>8</span>
-              <span>3938</span>
-              <span>9</span>
+              <span>{userData.public_repos}</span>
+              <span>{userData.followers}</span>
+              <span>{userData.following}</span>
             </p>
           </div>
           <div className="contactdiv">
@@ -66,21 +117,21 @@ function App() {
               <div className="icon1">
                 <div className="iconandtext">
                   <img className="icon" src={location} />
-                  <p className="icontext">San Francisco</p>
+                  <p className="icontext">{userData.location}</p>
                 </div>
                 <div className="iconandtext">
                   <img className="icon" src={link} />
-                  <p className="icontext">https://github.blog</p>
+                  <p className="icontext">{userData.blog}</p>
                 </div>
               </div>
               <div className="icon2">
                 <div className="iconandtext">
                   <img className="icon" src={twitter} />
-                  <p className="icontext">Not Available</p>
+                  <p className="icontext">{userData.twitter_username}</p>
                 </div>
                 <div className="iconandtext">
                   <img className="icon" src={github} />
-                  <p className="icontext">@github</p>
+                  <p className="icontext">{userData.company}</p>
                 </div>
               </div>
             </div>
@@ -89,6 +140,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
