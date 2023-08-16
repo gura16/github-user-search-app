@@ -31,9 +31,19 @@ const App: React.FC = () => {
   const [userData, setUserData] = useState<UserData | any>(String);
   const [noResult, setNoResult] = useState(false);
   const [userImage, setUserImage] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
+  };
+
+  const toggleBackgroundColor = () => {
+    setDarkMode((prevMode) => !prevMode);
+    if (darkMode) {
+      document.body.style.backgroundColor = "#141d2f";
+    } else {
+      document.body.style.backgroundColor = "#F6F8FF";
+    }
   };
 
   const handleSearch = async () => {
@@ -52,23 +62,40 @@ const App: React.FC = () => {
     <div className="body">
       <div className="maincard">
         <div className="container1">
-          <h1>devfinder</h1>
+          <h1 style={darkMode ? { color: "#222731" } : { color: "" }}>
+            devfinder
+          </h1>
           <div className="lightanddark">
             <div className="lightdiv">
-              <p className="lighttext">LIGHT</p>
-              <img className="sun" src={sun} />
-            </div>
-            <div className="darkdiv">
-              <p className="darktext">DARK</p>
-              <img className="dark" src={dark} />
+              <p
+                style={darkMode ? { color: "#4B6A9B" } : { color: "" }}
+                className="lighttext"
+              >
+                {darkMode ? "DARK" : "LIGHT"}
+              </p>
+              <img
+                onClick={toggleBackgroundColor}
+                className="sun"
+                src={darkMode ? dark : sun}
+              />
             </div>
           </div>
         </div>
-        <div className="container2">
+        <div
+          style={
+            darkMode ? { backgroundColor: "#FEFEFE" } : { backgroundColor: "" }
+          }
+          className="container2"
+        >
           <div className="searchdiv">
             <img className="searchfoto" src={search} />
             <input
-              className="input"
+              style={
+                darkMode
+                  ? { backgroundColor: "#FEFEFE" }
+                  : { backgroundColor: "" }
+              }
+              className={darkMode ? "input" : ""}
               placeholder="Search GitHub username…"
               value={inputValue}
               onChange={handleInputChange}
@@ -79,7 +106,12 @@ const App: React.FC = () => {
             Search
           </button>
         </div>
-        <div className="container3">
+        <div
+          style={
+            darkMode ? { backgroundColor: "#FEFEFE" } : { backgroundColor: "" }
+          }
+          className="container3"
+        >
           <div className="titlediv">
             <img
               className="ovalfoto"
@@ -90,33 +122,96 @@ const App: React.FC = () => {
               src={userImage ? userData.avatar_url : oval1}
             />
             <div className="titleinfo">
-              <h2>{userData.name}</h2>
+              <h2
+                style={
+                  darkMode ? { color: "rgba(43, 52, 66, 1)" } : { color: "" }
+                }
+              >
+                {userData.name}
+              </h2>
               <a href={userData.html_url} className="mail">
                 @{userData.login}
               </a>
-              <p className="date">
+              <p
+                style={
+                  darkMode ? { color: "rgba(43, 52, 66, 1)" } : { color: "" }
+                }
+                className="date"
+              >
                 Joned {new Date(userData.created_at).toLocaleDateString()}
               </p>
             </div>
           </div>
           <h3>{userData.bio}</h3>
-          <div className="followersdiv">
+          <div
+            style={
+              darkMode
+                ? { backgroundColor: "#FEFEFE" }
+                : { backgroundColor: "" }
+            }
+            className="followersdiv"
+          >
             <p className="followingtext">
-              <span>Repos</span>
-              <span className="followers">Followers</span>
-              <span>Following</span>
+              <span
+                style={
+                  darkMode ? { color: "rgba(75, 106, 155, 1)" } : { color: "" }
+                }
+              >
+                Repos
+              </span>
+              <span
+                style={
+                  darkMode ? { color: "rgba(75, 106, 155, 1)" } : { color: "" }
+                }
+                className="followers"
+              >
+                Followers
+              </span>
+              <span
+                style={
+                  darkMode ? { color: "rgba(75, 106, 155, 1)" } : { color: "" }
+                }
+              >
+                Following
+              </span>
             </p>
             <p className="followingnumber">
-              <span>{userData.public_repos}</span>
-              <span>{userData.followers}</span>
-              <span>{userData.following}</span>
+              <span
+                style={
+                  darkMode ? { color: "rgba(43, 52, 66, 1)" } : { color: "" }
+                }
+              >
+                {userData.public_repos}
+              </span>
+              <span
+                style={
+                  darkMode ? { color: "rgba(43, 52, 66, 1)" } : { color: "" }
+                }
+              >
+                {userData.followers}
+              </span>
+              <span
+                style={
+                  darkMode ? { color: "rgba(43, 52, 66, 1)" } : { color: "" }
+                }
+              >
+                {userData.following}
+              </span>
             </p>
           </div>
           <div className="contactdiv">
             <div className="icons">
               <div className="icon1">
                 <div className="iconandtext">
-                  <img className="icon" src={location} />
+                  <img
+                    style={
+                      darkMode
+                        ? { color: "rgba(43, 52, 66, 1)" }
+                        : { color: "" }
+                    }
+                    className="icon"
+                    src={location}
+                  />
                   <p className="icontext">{userData.location}</p>
                 </div>
                 <div className="iconandtext">
