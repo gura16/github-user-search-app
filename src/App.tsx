@@ -1,16 +1,18 @@
 import "./App.css";
-import sun from "./image/sun.png";
-import dark from "./image/dark.png";
-import search from "./image/search.png";
-import oval from "./image/Oval.png";
-import github from "./image/github.png";
-import twitter from "./image/twitter.png";
-import link from "./image/link.png";
-import location from "./image/location.png";
-import oval1 from "./image/Oval1.png";
+import sun from "./image/icon-sun.svg";
+import dark from "./image/icon-moon.svg";
+import search from "./image/icon-search.svg";
+import github from "./image/icon-company.svg";
+import twitter from "./image/icon-twitter.svg";
+import link from "./image/icon-website.svg";
+import location from "./image/icon-location.svg";
+import whitheweb from "./image/whithewebsait.svg";
+import whithetwitter from "./image/whithetwitter.svg";
+import whithelocation from "./image/whithelocation.svg";
+import whithecompany from "./image/whithecompany.svg";
 import axios from "axios";
-import React, { useState } from "react";
-import { profile } from "console";
+import React, { useEffect, useState } from "react";
+
 interface UserData {
   login: string;
   name: string;
@@ -27,11 +29,16 @@ interface UserData {
   html_url: string;
 }
 const App: React.FC = () => {
-  const [inputValue, setInputValue] = useState<string>("");
+  const defaultUser = "octocat";
+  const [inputValue, setInputValue] = useState<string>(defaultUser);
   const [userData, setUserData] = useState<UserData | any>(String);
   const [noResult, setNoResult] = useState(false);
   const [userImage, setUserImage] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    handleSearch();
+  }, []);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -41,6 +48,7 @@ const App: React.FC = () => {
     setDarkMode((prevMode) => !prevMode);
     if (darkMode) {
       document.body.style.backgroundColor = "#141d2f";
+      document.body.style.transition = "0.5s";
     } else {
       document.body.style.backgroundColor = "#F6F8FF";
     }
@@ -92,8 +100,8 @@ const App: React.FC = () => {
             <input
               style={
                 darkMode
-                  ? { backgroundColor: "#FEFEFE" }
-                  : { backgroundColor: "" }
+                  ? { backgroundColor: "#FEFEFE", color: "rgba(34, 39, 49, 1)" }
+                  : { backgroundColor: "", color: "" }
               }
               className={darkMode ? "input" : ""}
               placeholder="Search GitHub username…"
@@ -114,12 +122,8 @@ const App: React.FC = () => {
         >
           <div className="titlediv">
             <img
-              className="ovalfoto"
-              src={userImage ? userData.avatar_url : oval}
-            />
-            <img
               className="ovalfoto1"
-              src={userImage ? userData.avatar_url : oval1}
+              src={userImage ? userData.avatar_url : ""}
             />
             <div className="titleinfo">
               <h2
@@ -142,7 +146,9 @@ const App: React.FC = () => {
               </p>
             </div>
           </div>
-          <h3>{userData.bio}</h3>
+          <h3 style={darkMode ? { color: "#4B6A9B" } : { color: "" }}>
+            {userData.bio}
+          </h3>
           <div
             style={
               darkMode
@@ -152,35 +158,21 @@ const App: React.FC = () => {
             className="followersdiv"
           >
             <p className="followingtext">
-              <span
-                style={
-                  darkMode ? { color: "rgba(75, 106, 155, 1)" } : { color: "" }
-                }
-              >
+              <span style={darkMode ? { color: "#4B6A9B" } : { color: "" }}>
                 Repos
               </span>
               <span
-                style={
-                  darkMode ? { color: "rgba(75, 106, 155, 1)" } : { color: "" }
-                }
+                style={darkMode ? { color: "#4B6A9B" } : { color: "" }}
                 className="followers"
               >
                 Followers
               </span>
-              <span
-                style={
-                  darkMode ? { color: "rgba(75, 106, 155, 1)" } : { color: "" }
-                }
-              >
+              <span style={darkMode ? { color: "#4B6A9B" } : { color: "" }}>
                 Following
               </span>
             </p>
             <p className="followingnumber">
-              <span
-                style={
-                  darkMode ? { color: "rgba(43, 52, 66, 1)" } : { color: "" }
-                }
-              >
+              <span style={darkMode ? { color: "#2B3442" } : { color: "" }}>
                 {userData.public_repos}
               </span>
               <span
@@ -190,11 +182,7 @@ const App: React.FC = () => {
               >
                 {userData.followers}
               </span>
-              <span
-                style={
-                  darkMode ? { color: "rgba(43, 52, 66, 1)" } : { color: "" }
-                }
-              >
+              <span style={darkMode ? { color: "#2B3442" } : { color: "" }}>
                 {userData.following}
               </span>
             </p>
@@ -204,29 +192,83 @@ const App: React.FC = () => {
               <div className="icon1">
                 <div className="iconandtext">
                   <img
-                    style={
-                      darkMode
-                        ? { color: "rgba(43, 52, 66, 1)" }
-                        : { color: "" }
-                    }
                     className="icon"
-                    src={location}
+                    style={
+                      userData.location ? { opacity: "" } : { opacity: "50%" }
+                    }
+                    src={darkMode ? location : whithelocation}
                   />
-                  <p className="icontext">{userData.location}</p>
+                  {userData.location ? (
+                    <p
+                      style={darkMode ? { color: "#4B6A9B" } : { color: "" }}
+                      className="icontext"
+                    >
+                      {userData.location}
+                    </p>
+                  ) : (
+                    <p className="notavailable">Not Available</p>
+                  )}
                 </div>
                 <div className="iconandtext">
-                  <img className="icon" src={link} />
-                  <p className="icontext">{userData.blog}</p>
+                  <img
+                    style={userData.blog ? { opacity: "" } : { opacity: "50%" }}
+                    className="icon"
+                    src={darkMode ? link : whitheweb}
+                  />
+                  {userData.blog ? (
+                    <a
+                      href={userData.blog}
+                      style={darkMode ? { color: "#4B6A9B" } : { color: "" }}
+                      className="icontext"
+                    >
+                      {userData.blog}
+                    </a>
+                  ) : (
+                    <p className="notavailable">Not Available</p>
+                  )}
                 </div>
               </div>
               <div className="icon2">
                 <div className="iconandtext">
-                  <img className="icon" src={twitter} />
-                  <p className="icontext">{userData.twitter_username}</p>
+                  <img
+                    style={
+                      userData.twitter_username
+                        ? { opacity: "" }
+                        : { opacity: "50%" }
+                    }
+                    className="icon"
+                    src={darkMode ? twitter : whithetwitter}
+                  />
+                  {userData.twitter_username ? (
+                    <a
+                      href={`https://twitter.com/${userData.twitter_username}`}
+                      style={darkMode ? { color: "#4B6A9B" } : { color: "" }}
+                      className="icontext"
+                    >
+                      {userData.twitter_username}
+                    </a>
+                  ) : (
+                    <p className="notavailable">Not Available</p>
+                  )}
                 </div>
                 <div className="iconandtext">
-                  <img className="icon" src={github} />
-                  <p className="icontext">{userData.company}</p>
+                  <img
+                    style={
+                      userData.company ? { opacity: "" } : { opacity: "50%" }
+                    }
+                    className="icon"
+                    src={darkMode ? github : whithecompany}
+                  />
+                  {userData.company ? (
+                    <p
+                      style={darkMode ? { color: "#4B6A9B" } : { color: "" }}
+                      className="icontext"
+                    >
+                      {userData.company}
+                    </p>
+                  ) : (
+                    <p className="notavailable">Not Available</p>
+                  )}
                 </div>
               </div>
             </div>
