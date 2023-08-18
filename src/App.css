@@ -67,6 +67,7 @@ h1 {
 .container1 {
   display: flex;
   justify-content: space-between;
+  gap: 90px;
 }
 
 .container2 {
